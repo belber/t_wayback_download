@@ -87,7 +87,7 @@ def getImgMetaListTest():
 def downloadOneImg(imgUrl, saveImgFilePath):
     failImgUrl = None
     try:
-        imgUrlResponse = urllib.request.urlopen(imgUrl)
+        imgUrlResponse = urllib.request.urlopen(imgUrl,timeout=60)
         imgFile = open(saveImgFilePath, "wb")
         imgFile.write(imgUrlResponse.read())
         imgFile.close()
@@ -108,9 +108,9 @@ def downloadAllImgs(imgMetaInfoList, saveDirPath, threadName, threadLock):
         # 线程下载每张图片成功后要汇报
         threadLock.acquire()
         if failImgUrl is None:
-            successDownloadImgList.append(imgMetaInfo.imgUrl)
+            successDownloadImgList.append(imgMetaInfo)
         else:
-            failDownloadImgList.append(failImgUrl)
+            failDownloadImgList.append(imgMetaInfo)
         threadLock.release()
         i = i + 1
     return
@@ -177,11 +177,11 @@ def downloadAllImgsMultiProcess(imgUrlNameDictList, saveDirPath):
     global successDownloadImgList
     global failDownloadImgList
     summaryFile.write(str(len(successDownloadImgList)) + "张下载成功" + "\n")
-    for imgUrl in successDownloadImgList:
-        summaryFile.write(imgUrl + "\n")
+    for imgMetaInfo in successDownloadImgList:
+        summaryFile.write(imgMetaInfo.imgUrl + " , " + imgMetaInfo.imgName + "\n")
     summaryFile.write(str(len(failDownloadImgList)) + "张下载失败" + "\n")
-    for imgUrl in failDownloadImgList:
-        summaryFile.write(imgUrl + "\n")
+    for imgMetaInfo in failDownloadImgList:
+        summaryFile.write(imgMetaInfo.imgUrl + " , " + imgMetaInfo.imgName + "\n")
     summaryFile.close()
 
 
