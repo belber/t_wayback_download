@@ -1,5 +1,5 @@
 # 用途-Features
-使用Mennaruuk/twayback(https://github.com/Mennaruuk/twayback)下载的tweets只是html文件。
+使用Mennaruuk/twayback(https://github.com/Mennaruuk/twayback) 下载的tweets只是html文件。
 可以使用这个脚本自动解析tweets中的图片，多线程并行快速地批量将图片下载下来。
 
 # 使用方法-Usage
