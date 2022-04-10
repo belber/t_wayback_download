@@ -54,7 +54,7 @@ def getImgUrl(htmlUrl):
 
 # 单元测试getImgUrl
 def getImgUrlTest():
-    htmlUrl = "/Users/belber/Downloads/twayback/ilovegranville/1497272591815376898.html"
+    htmlUrl = "/Users/belber/Downloads/twayback/kobebryant/291072666432061440.html"
     imgMetaInfoList = getImgUrl(htmlUrl)
     for imgMetaInfo in imgMetaInfoList:
         imgMetaInfo.print()
@@ -78,7 +78,7 @@ def getImgMetaInfoList(htmlDir):
 
 # 单元测试getImgMetaList
 def getImgMetaListTest():
-    imgMetaInfoList = getImgMetaInfoList("/Users/belber/Downloads/twayback/Ilovesamuel_")
+    imgMetaInfoList = getImgMetaInfoList("/Users/belber/Downloads/twayback/kobebryant")
     for imgMetaInfo in imgMetaInfoList:
         imgMetaInfo.print()
 
@@ -188,11 +188,11 @@ def downloadAllImgsMultiProcess(imgUrlNameDictList, saveDirPath):
 # 单元测试downloadAllImgsMultiProcess
 def downloadAllImgsMultiProcessTest():
     imgMetaInfo1 = ImgMetaInfo(
-        "https://web.archive.org/web/20220121122924im_/https://pbs.twimg.com/media/FJmnqnFVIAMoYOr.jpg",
-        "1484401914041102339.jpg")
+        "https://web.archive.org/web/20220301224547im_/https://pbs.twimg.com/media/BAoZDEcCQAAPfU7.jpg",
+        "291072666432061440.jpg")
     imgMetaInfo2 = ImgMetaInfo(
-        "https://web.archive.org/web/20220323125655im_/https://pbs.twimg.com/media/FOdVtM-XoAco9bl.jpg",
-        "1506615851012661254.jpg")
+        "https://web.archive.org/web/20220301224547im_/https://pbs.twimg.com/media/BAoZDEcCQAAPfU7.jpg",
+        "291072666432061440_1.jpg")
     imgUrlNameDictList = [imgMetaInfo1, imgMetaInfo2]
     downloadAllImgsMultiProcess(imgUrlNameDictList, "./test")
 
@@ -206,7 +206,7 @@ if __name__ == '__main__':
 
     # 主程序部分
     # 给定目标目录
-    dir = "/Users/belber/Downloads/twayback/Ilovesamuel_"
+    dir = "/Users/belber/Downloads/twayback/kobebryant"
     if len(sys.argv) == 2:
         dir = sys.argv[1]
     saveDir = dir + "/img";
